@@ -36,6 +36,10 @@ import diary_import  # noqa: E402
 import diary_paths  # noqa: E402
 import diary_query as Q  # noqa: E402
 
+if getattr(sys, "frozen", False) and sys.platform.startswith("linux"):
+    # the downloaded AppImage: QtWebEngine's sandbox helper can't run from inside it
+    os.environ.setdefault("QTWEBENGINE_DISABLE_SANDBOX", "1")
+
 try:  # in-app video playback; must be imported before the QApplication exists
     from PyQt6.QtWebEngineCore import QWebEngineSettings
     from PyQt6.QtWebEngineWidgets import QWebEngineView

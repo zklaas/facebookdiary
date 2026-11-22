@@ -12,6 +12,18 @@ online only when you click a link or **Open on Facebook**.
 
 Runs on Linux, Windows and macOS.
 
+## Download
+
+Ready-to-run downloads (executable programs), with nothing else to install:
+
+* **Windows:** [FacebookDiary-Setup-Windows.exe](https://github.com/zklaas/facebookdiary/releases/latest/download/FacebookDiary-Setup-Windows.exe)
+* **macOS** (Apple silicon): [FacebookDiary-macOS.dmg](https://github.com/zklaas/facebookdiary/releases/latest/download/FacebookDiary-macOS.dmg)
+* **Linux:** [FacebookDiary-Linux-x86_64.AppImage](https://github.com/zklaas/facebookdiary/releases/latest/download/FacebookDiary-Linux-x86_64.AppImage)
+
+The first time, Windows or macOS asks before opening it; the
+[release page](https://github.com/zklaas/facebookdiary/releases/latest) says what to click.
+To install from the source code at the command line instead, see *Installing* below.
+
 ## Getting your Facebook export
 
 1. On Facebook, find **Download your information** (in Settings, under *Accounts Center ▸ Your information and permissions*; Facebook moves it from time to time).
@@ -81,7 +93,7 @@ every post that matches; click one to read it, with its photos, links and videos
 
 | | Index, settings, topics, media cache |
 |---|---|
-| Linux | `data/` in the FacebookDiary folder |
+| Linux | `data/` in the FacebookDiary folder (the downloaded AppImage: `~/.local/share/FacebookDiary`) |
 | Windows | `%LOCALAPPDATA%\FacebookDiary` |
 | macOS | `~/Library/Application Support/FacebookDiary` |
 

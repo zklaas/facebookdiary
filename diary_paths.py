@@ -1,6 +1,7 @@
 """Where FacebookDiary keeps its database, settings and media cache.
 
-Linux: data/ beside the program.  Windows: %LOCALAPPDATA%\\FacebookDiary.
+Linux: data/ beside the program (the downloaded AppImage, which can't write beside itself:
+~/.local/share/FacebookDiary).  Windows: %LOCALAPPDATA%\\FacebookDiary.
 macOS: ~/Library/Application Support/FacebookDiary.  FACEBOOKDIARY_DATA overrides all three."""
 import json
 import os
@@ -15,6 +16,9 @@ def default_data_dir():
         return os.path.join(base, "FacebookDiary")
     if sys.platform == "darwin":
         return os.path.join(os.path.expanduser("~"), "Library", "Application Support", "FacebookDiary")
+    if getattr(sys, "frozen", False):
+        base = os.environ.get("XDG_DATA_HOME") or os.path.join(os.path.expanduser("~"), ".local", "share")
+        return os.path.join(base, "FacebookDiary")
     return os.path.join(HERE, "data")
 
 
@@ -68,4 +72,6 @@ def default_source():
     s = load_settings().get("source")
     if s and os.path.isdir(s):
         return s
+    if getattr(sys, "frozen", False):          # downloaded program: start the folder chooser at home
+        return os.path.expanduser("~")
     return os.path.join(os.path.dirname(HERE), "facebook_posts")
